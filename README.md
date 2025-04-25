@@ -1,4 +1,4 @@
-# shop
+# Shopaholic
 
 A new Flutter project.
 
