@@ -1,5 +1,5 @@
 name: shop
-description: FlutterShop is a premium E-commerce UI kit that you can use to build various e-commerce apps using Flutter that works on both Android & iOS. This kit contains 100+ nicely crafted minimal screens that cover everything you need for your shop app.
+description: Shopaholic - A modern, feature-rich e-commerce shopping app built with Flutter. Experience seamless shopping with cart management, wishlist, search, filters, and much more!
 
 publish_to: "none"
 
@@ -20,6 +20,24 @@ dependencies:
   flutter_widget_from_html_core: ^0.15.1
   animations: ^2.0.11
   url_launcher: ^6.3.0
+  
+  # State Management
+  provider: ^6.1.1
+  
+  # Local Storage
+  shared_preferences: ^2.2.2
+  
+  # HTTP & API
+  http: ^1.1.2
+  
+  # Utilities
+  intl: ^0.19.0
+  uuid: ^4.2.1
+  
+  # UI Enhancements
+  shimmer: ^3.0.0
+  pull_to_refresh: ^2.0.0
+  flutter_staggered_grid_view: ^0.7.0
 
 dev_dependencies:
   flutter_test:

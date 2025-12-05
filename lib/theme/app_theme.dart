@@ -28,8 +28,44 @@ class AppTheme {
       appBarTheme: appBarLightTheme,
       scrollbarTheme: scrollbarThemeData,
       dataTableTheme: dataTableLightThemeData,
+      cardTheme: CardTheme(
+        color: Colors.white,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(defaultBorderRadious),
+        ),
+      ),
     );
   }
 
-  // Dark theme is inclided in the Full template
+  static ThemeData darkTheme(BuildContext context) {
+    return ThemeData(
+      brightness: Brightness.dark,
+      fontFamily: "Plus Jakarta",
+      primarySwatch: primaryMaterialColor,
+      primaryColor: primaryColor,
+      scaffoldBackgroundColor: darkGreyColor,
+      iconTheme: const IconThemeData(color: Colors.white),
+      textTheme: const TextTheme(
+        bodyMedium: TextStyle(color: whileColor80),
+      ),
+      elevatedButtonTheme: elevatedButtonThemeData,
+      textButtonTheme: textButtonThemeData,
+      outlinedButtonTheme: outlinedButtonTheme(),
+      inputDecorationTheme: darkInputDecorationTheme,
+      checkboxTheme: checkboxThemeData.copyWith(
+        side: const BorderSide(color: whileColor60),
+      ),
+      appBarTheme: appBarDarkTheme,
+      scrollbarTheme: scrollbarThemeData,
+      dataTableTheme: dataTableDarkThemeData,
+      cardTheme: CardTheme(
+        color: const Color(0xFF252530),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(defaultBorderRadious),
+        ),
+      ),
+    );
+  }
 }

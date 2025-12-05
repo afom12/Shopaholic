@@ -1,7 +1,9 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:shop/constants.dart';
+import 'package:shop/providers/cart_provider.dart';
 import 'package:shop/route/screen_export.dart';
 
 class EntryPoint extends StatefulWidget {
@@ -132,8 +134,80 @@ class _EntryPointState extends State<EntryPoint> {
               label: "Bookmark",
             ),
             BottomNavigationBarItem(
-              icon: svgIcon("assets/icons/Bag.svg"),
-              activeIcon: svgIcon("assets/icons/Bag.svg", color: primaryColor),
+              icon: Consumer<CartProvider>(
+                builder: (context, cartProvider, _) {
+                  return Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      svgIcon("assets/icons/Bag.svg"),
+                      if (cartProvider.itemCount > 0)
+                        Positioned(
+                          right: -8,
+                          top: -8,
+                          child: Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
+                              color: errorColor,
+                              shape: BoxShape.circle,
+                            ),
+                            constraints: const BoxConstraints(
+                              minWidth: 16,
+                              minHeight: 16,
+                            ),
+                            child: Text(
+                              cartProvider.itemCount > 99
+                                  ? '99+'
+                                  : cartProvider.itemCount.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                    ],
+                  );
+                },
+              ),
+              activeIcon: Consumer<CartProvider>(
+                builder: (context, cartProvider, _) {
+                  return Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      svgIcon("assets/icons/Bag.svg", color: primaryColor),
+                      if (cartProvider.itemCount > 0)
+                        Positioned(
+                          right: -8,
+                          top: -8,
+                          child: Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
+                              color: errorColor,
+                              shape: BoxShape.circle,
+                            ),
+                            constraints: const BoxConstraints(
+                              minWidth: 16,
+                              minHeight: 16,
+                            ),
+                            child: Text(
+                              cartProvider.itemCount > 99
+                                  ? '99+'
+                                  : cartProvider.itemCount.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                    ],
+                  );
+                },
+              ),
               label: "Cart",
             ),
             BottomNavigationBarItem(

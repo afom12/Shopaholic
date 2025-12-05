@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop/constants.dart';
+import 'package:shop/providers/theme_provider.dart';
 
 import 'components/prederence_list_tile.dart';
 
@@ -10,18 +13,35 @@ class PreferencesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Cookie preferences"),
-        actions: [
-          TextButton(
-            onPressed: () {},
-            child: const Text("Reset"),
-          )
-        ],
+        title: const Text("Preferences"),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: defaultPadding),
         child: Column(
           children: [
+            // Theme Toggle
+            Consumer<ThemeProvider>(
+              builder: (context, themeProvider, _) {
+                return ListTile(
+                  title: const Text("Dark Mode"),
+                  subtitle: const Padding(
+                    padding: EdgeInsets.only(top: defaultPadding / 2),
+                    child: Text(
+                      "Switch between light and dark theme",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                  trailing: CupertinoSwitch(
+                    onChanged: (value) {
+                      themeProvider.toggleTheme();
+                    },
+                    activeColor: primaryColor,
+                    value: themeProvider.isDarkMode,
+                  ),
+                );
+              },
+            ),
+            const Divider(height: defaultPadding * 2),
             PreferencesListTile(
               titleText: "Analytics",
               subtitleTxt:
